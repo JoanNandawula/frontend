@@ -1,0 +1,76 @@
+/* Navbar.css */
+
+/* General Navbar Styles */
+.navbar {
+    background-color: #343a40; /* Dark background for navbar */
+    padding: 5px 20px; /* Padding for better spacing */
+    position: fixed; /* Make the navbar fixed at the top */
+    width: 100%; /* Ensure the navbar stretches across the full width */
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar-brand {
+    font-size: 2rem; /* Larger font for brand name */
+    font-weight: bold;
+    color: #6f42c1; /* Purple color for brand */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Slight spacing for the brand */
+  }
+  
+  .navbar-brand:hover {
+    color: #fff; /* White color when hovered */
+  }
+  
+  .navbar-nav {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    gap: 20px; /* Space between items */
+    align-items: center; /* Vertically center the items */
+    justify-content: flex-end; /* Align items to the right */
+  }
+  
+  .navbar-nav .nav-item {
+    margin: 0;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white; /* White text for nav items */
+    font-weight: 600;
+    font-size: 1.1rem; /* Slightly larger font for nav links */
+    padding: 8px 15px; /* Padding for better click area */
+    border-radius: 5px; /* Rounded corners for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: #6f42c1; /* Purple background on hover */
+    color: white; /* Ensure text stays white on hover */
+    text-decoration: none;
+  }
+  
+  .navbar-toggler {
+    border-color: #6f42c1; /* Purple border for toggler button */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #6f42c1; /* Purple color for the toggler icon */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      flex-direction: column; /* Stack the items vertically on small screens */
+      text-align: center; /* Center align nav items */
+      margin-top: 10px; /* Space at the top of the mobile navbar */
+    }
+  
+    .navbar-nav .nav-link {
+      padding: 10px 15px; /* Add more padding on smaller screens */
+    }
+  
+    .navbar-collapse {
+      background-color: #343a40; /* Background color to match the navbar */
+    }
+  }
+  

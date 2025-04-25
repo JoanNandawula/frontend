@@ -1,0 +1,44 @@
+.product-details {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .product-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    width: 50%;
+  }
+  
+  .product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .product-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 20px;
+    color: #6c63ff;
+  }
+  
+  .btn {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #5a54e6;
+  }
+  
