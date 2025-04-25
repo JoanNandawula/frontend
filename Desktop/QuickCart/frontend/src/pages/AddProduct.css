@@ -1,0 +1,43 @@
+/* src/pages/AddProduct.css */
+.add-product-container {
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .add-product-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .add-product-form label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .add-product-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-product-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+  }
+  
+  .add-product-form button:hover {
+    background-color: #45a049;
+  }
+  

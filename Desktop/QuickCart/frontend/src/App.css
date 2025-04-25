@@ -1,0 +1,86 @@
+/* Ensure body takes up full height */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Ensure #root stretches to the full width and height */
+#root {
+  width: 100%; /* Allow full width */
+  min-height: 100vh; /* Ensure it takes up the full height of the screen */
+  display: flex;
+  flex-direction: column; /* Stack Navbar, Content, and Footer */
+  text-align: center;
+}
+
+/* The main container of your app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the footer stays at the bottom */
+}
+
+/* Content area inside the app */
+.content {
+  flex-grow: 1; /* This allows the content area to expand and push the footer down */
+  padding-bottom: 3rem; /* Add padding to prevent overlap with footer */
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #6a0dad; /* Purple */
+  color: white;
+  width: 100%; /* Full width */
+}
+
+/* Footer styles */
+footer {
+  background-color: #6a0dad;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%; /* Full width */
+}
+
+/* Card and logo styles */
+.card {
+  padding: 2em;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
