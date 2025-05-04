@@ -1,31 +1,69 @@
-// src/pages/ProductDetails.jsx
 import React, { useEffect, useState } from 'react';
-import { useCart } from '../context/CartContext'; // Correctly import useCart
-import './ProductDetails.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import API from '../api';
 
-const ProductDetails = ({ product }) => {
-  const { addToCart } = useCart(); // Destructure addToCart from the context
-  const [productDetails, setProductDetails] = useState(null);
+const ProductDetails = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    setProductDetails(product); // Assuming you have the product info
-  }, [product]);
+    const fetchProduct = async () => {
+      try {
+        const res = await API.get(`/products/${id}/`);
+        setProduct(res.data);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+        alert("Failed to load product details.");
+      }
+    };
 
-  const handleAddToCart = () => {
-    if (addToCart && productDetails) {
-      addToCart(productDetails);
+    fetchProduct();
+  }, [id]);
+
+  const handleAddToCart = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("You need to log in to add items to your cart.");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      await API.post(`/cart/add/${id}/`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert("Item added to cart!");
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert("Session expired. Please log in again.");
+        navigate("/login");
+      } else {
+        console.error("Add to cart failed:", error);
+        alert("Failed to add item to cart.");
+      }
     }
   };
 
-  if (!productDetails) {
-    return <div>Loading...</div>;
-  }
+  if (!product) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>{productDetails.name}</h1>
-      <p>{productDetails.description}</p>
-      <button onClick={handleAddToCart}>Add to Cart</button>
+    <div className="container mt-4">
+      <h2>{product.name}</h2>
+      <img
+        src={product.image ? product.image : 'https://via.placeholder.com/300'}
+        alt={product.name}
+        className="img-fluid mb-3"
+        style={{ maxWidth: '300px' }}
+      />
+      <p>{product.description || "No description available."}</p>
+      <p><strong>Price:</strong> UGX {product.price}</p>
+      <button className="btn btn-success" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </div>
   );
 };

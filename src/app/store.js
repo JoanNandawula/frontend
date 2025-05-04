@@ -1,10 +1,10 @@
+// src/app/store.js
 import { configureStore } from '@reduxjs/toolkit';
-import productsReducer from '../features/products/productsSlice'; // adjust path as needed
-import cartReducer from '../features/cart/cartSlice';
+
+// You can add reducers here as your app grows
 const store = configureStore({
   reducer: {
-    products: productsReducer,
-    cart: cartReducer,
+    // example: cart: cartReducer,
   },
 });
 

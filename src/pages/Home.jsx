@@ -1,23 +1,27 @@
-import React from 'react';
+// File: src/pages/Home.jsx
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import API from '../api';
 
 const Home = () => {
-  const products = [
-    { id: 1, name: 'New Phone', price: 99.99 }, // Example product
-    { id: 2, name: 'Laptop', price: 799.99 },
-    { id: 3, name: 'Smart Watch', price: 149.99 },
-    // Add more products as needed
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    API.get('/products/').then(res => setProducts(res.data.products));
+  }, []);
 
   return (
-    <div className="product-list">
-      {products.map((product) => (
-        <div key={product.id} className="product-card">
-          <h3>{product.name}</h3>
-          <p>${product.price}</p>
-          <Link to={`/products/${product.id}`}> {/* Change here */}
-            <button className="btn">View Details</button>
-          </Link>
+    <div className="row">
+      {products.map((p, index) => (
+        <div key={index} className="col-md-4 mb-4">
+          <div className="card">
+            <img src={p.image_url || 'https://via.placeholder.com/150'} className="card-img-top" alt={p.name} />
+            <div className="card-body">
+              <h5 className="card-title">{p.name}</h5>
+              <p className="card-text">UGX {p.price}</p>
+              <Link to={`/product/${index + 1}`} className="btn btn-primary">View</Link>
+            </div>
+          </div>
         </div>
       ))}
     </div>
